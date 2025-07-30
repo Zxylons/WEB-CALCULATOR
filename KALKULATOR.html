@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KALKULATOR SEDERHANA | TUGAS JAVASCRIPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container-calci">
+        <div class="display">
+            <input id="screen" placeholder="0">
+        </div>
+
+        <div class="btns">
+            <div class="row">
+                <button onclick="backspc()">CE</button>
+                <button id="clear" onclick="screen.value=''">AC</button>
+                <button onclick="percentage()">%</button>
+                <button class="btn">/</button>
+            </div>
+
+            <div class="row">
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">x</button>
+            </div>
+
+            <div class="row">
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">-</button>
+            </div>
+
+            <div class="row">
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">+</button>
+            </div>
+
+            <div class="row">
+                <button id:="negatif" onclick="negatif()">+/-</button>
+                <button class="btn">0</button>
+                <button class="btn">,</button>
+                <button onclick="screen.value=eval(screen.value)">=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var screen=document.querySelector('#screen');
+        var btn=document.querySelectorAll('.btn');
+
+        for(item of btn){
+            item.addEventListener('click',(e)=>{
+                btntext=e.target.innerText;
+                if(btntext=='x'){
+                    btntext='*'
+                }
+                if(btntext=='/'){
+                    btntext='/'
+                }
+                screen.value+=btntext;
+            });
+            function backspc(){
+                screen.value=screen.value.substr(0,screen.value.length-1);
+            }
+            function negatif(){
+                screen.value=screen.value*-1
+            }
+            function percentage(){
+                screen.value=screen.value/100
+            }
+        }
+    </script>
+</body>
+</html>
